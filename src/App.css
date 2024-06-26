@@ -1,38 +1,105 @@
-.App {
+.container {
+  position:fixed;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto; /* Добавлено для скроллбара */
+  background-color: #f9f9f9;
+  height: 100%;
+  width: 100%;
+  padding: 20px; /* Добавлено для отступа от краев окна */
+}
+
+.elements {
+  list-style-type: none;
+  display: flex;
+  width: 80%; /* Делаем список elements растянутым на всю ширину контейнера */
+  padding: 0;
+  margin: 0; /* Убираем внешние отступы */
+}
+
+.elements li {
+  flex: 1; /* Делаем элементы списка растянутыми равномерно */
+}
+
+.elements li:last-child {
+  margin-right: 0; /* Убираем отступ у последнего элемента */
+}
+
+.extract {
+  padding: 0;
+  list-style-type: none;
+  width: 100%; /* Делаем список extract растянутым на всю ширину родителя */
+}
+
+.dropzone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Делаем dropzone растянутым на всю ширину родителя */
+  height: 200px;
+  border: 2px dashed #007bff;
+  border-radius: 10px;
+  background-color: #ffffff;
+  color: #007bff;
+  cursor: pointer;
+  margin-bottom: 20px;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.dropzone p {
+  margin: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.extract-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.extract-button:hover {
+  background-color: #0056b3;
 }
 
-.App-link {
-  color: #61dafb;
+.summary {
+  width: 80%; /* Делаем annotation растянутым на всю ширину родителя */
+  margin-left: 20px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  height: 100%;
+  max-height: 200px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.code-header {
+  display: flex; /* Отображаем элементы в строку */
+  justify-content: space-between; /* Распределяем элементы по краям */
+  align-items: center; /* Выравниваем по центру вертикально */
+  margin-bottom: 10px; /* Отступ снизу */
+}
+
+.copy-button {
+  padding: 5px 10px; /* Внутренние отступы */
+  font-size: 14px; /* Размер шрифта */
+  color: #ffffff; /* Цвет текста */
+  background-color: #007bff; /* Цвет фона */
+  border: none; /* Без границы */
+  border-radius: 5px; /* Скругление углов */
+  cursor: pointer; /* Курсор при наведении */
+}
+
+.copy-button:hover {
+  background-color: #0056b3; /* Изменение цвета фона при наведении */
 }
