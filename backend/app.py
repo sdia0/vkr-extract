@@ -15,6 +15,7 @@ def summarize():
     try:
         data = request.get_json()
         text = data['text']
+        prompt = data['prompt']
 
         client = OpenAI(
             api_key = os.getenv("OPENAI_API_KEY"),
@@ -24,17 +25,7 @@ def summarize():
         response = client.chat.completions.create( # Change the method
             model = "gpt-3.5-turbo",
             messages = [ # Change the prompt parameter to messages parameter
-                {"role": "system", "content": (
-                    f"Верни мне ответ в виде:\n"
-                    f"1. Цель и задачи работы:\n"
-                    f"2. Объект и предмет исследования:\n"
-                    f"3. Методы исследования:\n"
-                    f"4. Результаты исследования:\n"
-                    f"5. Научная новизна и практическая значимость:\n"
-                    f"6. Область применения:\n"
-                    f"7. Объем работы:\n"
-                    f"Сам текст:\n\n{text}\n\n"
-                )},
+                {"role": "system", "content": prompt + text },
             ]
         ) 
         summary = response.choices[0].message.content.strip()

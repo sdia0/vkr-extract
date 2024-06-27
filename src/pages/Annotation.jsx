@@ -4,7 +4,7 @@ import mammoth from 'mammoth';
 import './App.css';
 import clipboardCopy from 'clipboard-copy'; // Импортируем библиотеку для копирования в буфер обмена
 
-const App = () => {
+const Annotation = () => {
     const [fileContent, setFileContent] = useState('');
     const [summary, setSummary] = useState('');
     const [loading, setLoading] = useState(false);
@@ -37,12 +37,14 @@ const App = () => {
         setLoading(true); // Установка состояния загрузки
 
         try {
+            const prompt = "Сделай аннотацию к ВКР. БЕЗ заголовков. Текст: ";
+
             const response = await fetch('http://127.0.0.1:5000/generate', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ text: fileContent }),
+                body: JSON.stringify({ text: fileContent, prompt: prompt }),
             });
 
             if (!response.ok) {
@@ -93,7 +95,7 @@ const App = () => {
                         </li>
                         <li>
                             <button className="extract-button" onClick={generateSummary} disabled={loading}>
-                                Извлечь
+                                Составить
                             </button>
                         </li>
                     </ul>
@@ -118,4 +120,4 @@ const App = () => {
     );
 };
 
-export default App;
+export default Annotation;
